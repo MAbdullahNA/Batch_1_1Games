@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     {
         userName.text = PlayerPrefs.GetString("userName");
         userAge.text = PlayerPrefs.GetString("userAge");
+
     }
 
     // Update is called once per frame
