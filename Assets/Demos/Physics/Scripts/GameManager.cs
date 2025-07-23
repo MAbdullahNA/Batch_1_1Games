@@ -3,10 +3,14 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject[] levelGOs;
     public InputField userName, userAge;
+    public int levelNo = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //levelNo = PlayerPref
+        Instantiate(levelGOs[levelNo]);
         userName.text = PlayerPrefs.GetString("userName");
         userAge.text = PlayerPrefs.GetString("userAge");
 

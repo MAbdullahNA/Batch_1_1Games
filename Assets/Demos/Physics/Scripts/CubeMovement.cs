@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class CubeMovement : MonoBehaviour
 {
+    public GameManager _gameManager;
+
     int num = 5;
     [SerializeField] Renderer r1, r2, r3, r4, r5;
 
@@ -60,6 +62,25 @@ public class CubeMovement : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = false;
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Finish")
+        {
+            isGameStart = false;
+            int level = _gameManager.levelNo;
+            level++;
+            if(level<_gameManager.levelGOs.Length)
+            {
+                //playerPref
+            }
+            else
+            {
+                level = 0;
+                //playerPres
+            }
+            //Scene reload
         }
     }
     //
