@@ -37,10 +37,14 @@ public class CubeMovement : MonoBehaviour
         if (isGameStart)
         {
             inputX = Input.GetAxis("Horizontal");
-            inputY = Input.GetAxis("Vertical");
+            //inputY = Input.GetAxis("Vertical");
 
-            transform.Translate(new Vector3(0, 0, 1) * Time.deltaTime * speed * inputY);
+            transform.Translate(new Vector3(0, 0, 1) * Time.deltaTime * speed);
             transform.Translate(Vector3.right * Time.deltaTime * turnSpeed * inputX);
+
+            float playerX = transform.position.x;
+            playerX = Mathf.Clamp(playerX, -2.25f, 2.25f);
+            transform.position = new Vector3(playerX, transform.position.y, transform.position.z);
 
             float jumpInput = Input.GetAxis("Jump");
             if (jumpInput == 1 && isGrounded) // isGrounded == true// ground check with collider
